@@ -1,0 +1,29 @@
+<h2> Employee List</h2>
+<table class = "table table-striped">
+    <thead>
+        <tr>
+            <th> Employee First  Name</th>
+            <th>Employee Middle Name </th>
+            <th>Employee Last Name </th>
+            <th> Employee DOB </th>
+            <th>Employee Address </th>
+            <th>Employee Phone Number </th>
+            <th> Actions </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor = "let employee of employees | paginate: { itemsPerPage: 1, currentPage: p }" >
+            <td> {{ employee.firstName }} </td>
+            <td> {{ employee.middleName }} </td>
+            <td> {{ employee.lastName }} </td>
+            <td> {{ employee.dateOfBirth }} </td>
+            <td> {{ employee.address }} </td>
+            <td> {{ employee.phoneNumber }} </td>
+            <td style='white-space: nowrap'>
+                <button (click)="updateEmployee(employee.employeeId)" class = "btn btn-primary btn-xs"> Edit</button>
+                <button (click)="deleteEmployee(employee.employeeId)" class = "btn btn-danger btn-xs" style="margin-left: 10px"> Delete</button>
+            </td>
+        </tr>
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </tbody>
+</table>
